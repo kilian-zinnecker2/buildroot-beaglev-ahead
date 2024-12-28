@@ -1,0 +1,30 @@
+From 81db2d155db74192e127ae1d98dd4ec415f53dd3 Mon Sep 17 00:00:00 2001
+From: Kilian Zinnecker <kilian.zinnecker@mail.de>
+Date: Mon, 21 Aug 2023 23:51:59 +0200
+Subject: [PATCH] Overwrite bootcmd by force
+
+This patch is a dirty hack: Trying to overwrite the bootcmd via the
+usual BOOT_COMMAND had no effect: Upon boot the bootcmd defaulted
+to some preset value and could not be changed easily. Therefore a
+hook is used to force the bootcmd to be overwritten.
+
+Signed-off-by: Kilian Zinnecker <kilian.zinnecker@mail.de>
+---
+ board/thead/light-c910/light.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/board/thead/light-c910/light.c b/board/thead/light-c910/light.c
+index 8d5478e916..1448db974e 100644
+--- a/board/thead/light-c910/light.c
++++ b/board/thead/light-c910/light.c
+@@ -2282,6 +2282,7 @@ int board_late_init(void)
+ 	light_usb_boot_check();
+ 	do_firmware_load();
+ 	ap_peri_clk_disable();
++	run_command("load mmc 1:1 $ramdisk_addr_r uEnv.txt; env import -t $ramdisk_addr_r $filesize; run uenvcmd", 0);
+ 	return 0;
+ }
+
+--
+2.34.1
+

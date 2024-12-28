@@ -2039,8 +2039,10 @@ F:	package/libcamera/
 
 N:	Kilian Zinnecker <kilian.zinnecker@mail.de>
 F:	board/avnet/rzboard_v2l/
+F:	board/beaglev-ahead/
 F:	board/radxa/rock5b/
 F:	configs/avnet_rzboard_v2l_defconfig
+F:	configs/beaglev_ahead_defconfig
 F:	configs/rock5b_defconfig
 F:	package/rockchip-rkbin/
 F:	package/xuantie-bins/
