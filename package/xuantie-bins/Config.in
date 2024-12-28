@@ -1,0 +1,8 @@
+config BR2_PACKAGE_XUANTIE_BINS
+	bool "xuantie-bins"
+	depends on BR2_riscv
+	help
+	  This package provides binary blobs, needed for the
+	  BeagleV-Ahead's SoC (TH1520). They contain an FPGA binary
+	  (light_aon_fpga.bin) for power management and a binary for
+	  the audio system (light_c906_audio.bin).
